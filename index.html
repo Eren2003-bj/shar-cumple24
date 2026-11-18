@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#102b4e">
+  <meta name="description" content="Siete días, siete recuerdos y una historia que sigue escribiéndose.">
+  <title>Entre flores azules y recuerdos</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="flor" viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="27" rx="14" ry="21"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(72 50 50)" fill-opacity=".92"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(144 50 50)"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(216 50 50)" fill-opacity=".92"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(288 50 50)"/></g><circle cx="50" cy="50" r="9" fill="#f6e2b3"/><circle cx="50" cy="50" r="4" fill="#c9a96a"/></symbol></svg>
+  <div class="ambient ambient-one" aria-hidden="true"></div>
+  <div class="ambient ambient-two" aria-hidden="true"></div>
+  <div class="picnic-decor" id="picnicDecor" aria-hidden="true"></div>
+  <main class="shell">
+    <header class="topbar">
+      <a class="wordmark" href="#inicio" aria-label="Ir al inicio"><span class="wordmark-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span> J.S. <span class="wordmark-divider">/</span> R.</a>
+      <span class="topbar-note">Una historia hecha de recuerdos</span>
+      <span class="topbar-date">16 al 22 de noviembre de 2026</span>
+    </header>
+
+    <section id="inicio" class="screen hero-screen">
+      <div class="hero-copy">
+        <p class="eyebrow"><span class="eyebrow-line"></span> De un caballero para su princesa enamorada <span class="eyebrow-line"></span></p>
+        <h1>Entre flores<br><em>azules</em> y recuerdos</h1>
+        <p class="hero-lede">Hay historias que empiezan sin avisar. La nuestra comenzó con un partido, una frase inesperada y un pequeño sachet de ketchup.</p>
+        <div class="hero-meta"><span>Siete días</span><i>✧</i><span>Siete recuerdos</span><i>✧</i><span>Una historia</span></div>
+        <button class="button button-primary" id="startButton">Abrir nuestra historia <span>↗</span></button>
+        <p class="hero-footnote">Hecho con cariño, un día a la vez.</p>
+      </div>
+      <div class="hero-art" aria-label="Ilustración decorativa de flores azules">
+        <div class="art-orbit orbit-a"></div><div class="art-orbit orbit-b"></div>
+        <div class="art-card"><span class="art-card-top">A collection of us</span><div class="flower-art"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div><span class="art-card-title">our story<br><em>in blue</em></span><span class="art-card-bottom">16–22 November 2026</span></div>
+        <span class="floating-star star-a">✧</span><span class="floating-star star-b">✦</span><span class="floating-heart">♡</span>
+      </div>
+    </section>
+
+    <section id="calendario" class="screen hidden">
+      <div class="section-heading">
+        <p class="eyebrow">Nuestra pequeña aventura</p>
+        <h2>Siete días para<br><em>celebrarte</em></h2>
+        <p>Una colección de momentos, detalles y pequeñas sorpresas que nos acercan a tu día.</p>
+      </div>
+      <div class="progress-wrap"><div class="progress-label"><span>La colección</span><span id="progressText">1 de 7 recuerdos</span></div><div class="progress-track"><span id="progressBar"></span></div></div>
+      <div id="dayList" class="day-list"></div>
+      <button class="button button-quiet" id="backHome">← Volver a la portada</button>
+    </section>
+
+    <section id="mision" class="screen hidden">
+      <button class="back-link" id="backCalendar">← Volver a la colección</button>
+      <div class="mission-kicker"><span>Estampa 1</span><span class="kicker-dot">✦</span><span>16 de noviembre</span></div>
+      <div class="mission-heading">
+        <p class="eyebrow">Misión 1 · El primer capítulo</p>
+        <h2>Donde comenzó<br><em>todo</em></h2>
+        <p class="mission-subtitle">30 de noviembre de 2025 · El día en que nuestros caminos empezaron a cruzarse.</p>
+      </div>
+      <div class="chapter-quote"><span class="quote-mark">“</span><p>A mí Shingeki me ha dado más alegrías y más emociones que cualquier mujer.</p><span class="quote-caption">— Una frase que envejeció de una manera inesperada.</span></div>
+      <div class="story-grid">
+        <article class="story-card story-card-wide"><div class="story-icon">🏐</div><div><p class="story-label">Escena I · El partido</p><h3>Una amiga, un plan y un partido de vóley</h3><p>Una amiga estaba convencida de que éramos tal para cual, incluso antes de que nos conociéramos. Así que organizó un partido con amigos. Yo todavía no sabía que ese encuentro iba a convertirse en el principio de algo tan bonito... y una chica tan bonita.</p></div></article>
+        <article class="story-card"><div class="story-icon">🤓</div><p class="story-label">Escena II · La frase</p><h3>Una declaración muy seria… o no tanto</h3><p>Al terminar el partido fuimos a comer. Antes de entrar a la pollería solté aquella frase sobre Shingeki. No tenía una razón especial; simplemente me hizo gracia decirla. Qué curioso que la vida tuviera preparado un giro para esa historia.</p></article>
+        <article class="story-card"><div class="story-icon">🍅</div><p class="story-label">Escena III · El ketchup</p><h3>El sachet que inició una conversación</h3><p>Te sentaste frente a mí y estabas teniendo problemas para abrir tu ketchup. Me ofrecí a ayudarte. Fue un gesto pequeñito, casi insignificante, pero terminó siendo una de esas casualidades que hoy recuerdo con una sonrisa.</p></article>
+        <article class="story-card"><div class="story-icon">💻</div><p class="story-label">Escena IV · Nuestras primeras noches</p><h3>Dos pantallas y un mismo universo</h3><p>Después empezamos a hablar cada vez más. Compartimos capítulos de Gossip Girl y Shingeki no Kyojin por Google Meet. Todavía no estábamos frente a frente viendo una serie en el mismo sofá, pero ya encontrábamos maneras de compartir tiempo y acercarnos.</p></article>
+      </div>
+      <div class="reveal-note"><span class="reveal-spark">✧</span><div><p class="story-label">El detalle que no olvido</p><p>Al principio pensé que eras mucho menor y por eso casi no te presté atención. Entonces me dijiste que tenías 23. Algo hizo clic en mi cabeza y empecé a mirarte de otra manera mi amor. Sin darme cuenta, aquella conversación ya me estaba acercando a ti.</p></div></div>
+
+      <article class="memory-post">
+        <div class="post-head"><div class="post-avatar"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div><div><strong>entre.flores.azules</strong><span>30 de noviembre de 2025 · un día cualquiera…</span></div><span class="post-more">•••</span></div>
+        <img class="post-photo" src="assets/primer-encuentro-grupal.jpg" alt="Fotografía grupal después del partido de vóley del 30 de noviembre de 2025">
+        <div class="post-actions"><span>♡　○　➤</span><span>✧</span></div>
+        <div class="post-caption"><strong>entre.flores.azules</strong> Una foto grupal. Un partido de vóley. Un montón de personas que todavía no sabían lo que la vida estaba preparando. <em>Y nosotros, sin sospechar nuestro destino.</em></div>
+        <p class="post-location">Memoria · Trujillo</p>
+      </article>
+
+      <section class="quiz-section">
+        <div class="quiz-heading"><p class="eyebrow">Un pequeño juego</p><h3>¿Cuánto recuerdas<br><em>de aquel día?</em></h3><p>Responde estas tres preguntas y después tendrás que abrir un pequeño sachet para descubrir tu primera estampa.</p></div>
+        <div id="quiz"></div>
+        <div id="quizResult" class="quiz-result hidden"><span class="result-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><h3>Primer recuerdo desbloqueado</h3><p>No importa cuántas acertaste. Lo bonito es que esta historia también es tuya.</p><button class="button button-primary" id="startKetchupGame">Abrir el sachet para revelar la estampa <span>↗</span></button></div>
+      </section>
+      <div class="mission-signoff"><span>♡</span><p>Y pensar que todo empezó con un partido, una frase de anime y un sachet de ketchup.</p></div>
+    </section>
+
+    <section id="minijuego" class="screen hidden">
+      <button class="back-link" id="backToQuiz">← Volver al recuerdo</button>
+      <div class="game-heading"><p class="eyebrow">Misión extra · Escena III</p><h2>El sachet <em>de ketchup</em></h2><p>Rasga el sobre desde la muesca y arrastra hacia la derecha, con un movimiento suave. Abrirlo con calma es parte del recuerdo.</p></div>
+      <div class="ketchup-game" id="ketchupGame">
+        <p class="tear-hint" id="tearHint">Empieza en la muesca de la izquierda</p>
+        <div class="sachet" id="ketchupPacket">
+          <div class="sachet-bloom" aria-hidden="true"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
+          <div class="sachet-top" id="tearTrack" role="slider" tabindex="0" aria-label="Rasgar el sachet de izquierda a derecha" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Cerrado">
+            <div class="sachet-mouth"></div><div class="sachet-strip" id="packetTear"></div><span class="sachet-curl"></span><span class="sachet-notch"></span>
+          </div>
+          <div class="sachet-body"><div class="sachet-label"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg><strong>Tomato Love</strong><small>Ketchup · 12 g</small></div></div>
+          <div class="sachet-bottom"></div>
+        </div>
+        <p class="game-feedback" id="gameFeedback" aria-live="polite">Mantén pulsado sobre el borde superior y arrastra.</p>
+        <button class="button button-quiet" id="openTapButton" type="button">Abrir de un toque</button>
+        <button class="button button-primary hidden" id="revealStampButton" type="button">Ver mi estampa <span>✧</span></button>
+      </div>
+    </section>
+
+    <section id="estampa" class="screen hidden">
+      <button class="back-link" id="backMission">← Volver al recuerdo</button>
+      <div class="stamp-intro"><p class="eyebrow">Un recuerdo para guardar</p><h2>Tu primera<br><em>estampa</em></h2><p>Una pequeña pieza de nuestra historia. Puedes imprimirla y guardarla.</p></div>
+      <article id="printableStamp" class="print-stamp">
+        <div class="stamp-border">
+          <div class="stamp-topline"><span>Entre flores azules y recuerdos</span><span>Colección · 1 de 7</span></div>
+          <div class="stamp-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
+          <p class="stamp-overline">El primer capítulo</p>
+          <h2>Donde comenzó<br><em>todo</em></h2>
+          <img class="stamp-memory-photo" src="assets/primer-encuentro-grupal.jpg" alt="La foto grupal del día del partido">
+          <div class="stamp-illustration"><span class="stamp-ball">👸</span><span class="stamp-sparkle">✧</span><span class="stamp-tomato">♡</span><span class="stamp-sword">⚔️</span></div>
+          <p class="stamp-date">30 de noviembre de 2025 · Trujillo</p>
+          <p class="stamp-story">Un partido de vóley, una frase inesperada sobre Shingeki y un sachet de ketchup. No sabíamos que aquel día estábamos comenzando una historia.</p>
+          <div class="stamp-rule"><span>✧</span></div>
+          <p class="stamp-dedication">“El comienzo más importante<br>se escondía en los detalles más pequeños.”</p>
+          <div class="stamp-song" aria-label="Canción especial: Sabes una cosa, de Luis Miguel">
+            <img src="assets/qr-sabes-una-cosa-luis-miguel.png" alt="Código QR para escuchar Sabes una cosa de Luis Miguel en YouTube">
+            <div><span class="song-eyebrow">Una canción para nosotros</span><strong>Sabes una cosa · Luis Miguel</strong><a href="https://www.youtube.com/watch?v=UuGrc3vvdMw" target="_blank" rel="noopener noreferrer">Escuchar en YouTube ↗</a><small>Escanea el código y vuelve a escucharla.</small></div>
+          </div>
+          <div class="stamp-footer"><span>Un día a la vez</span><span>16 de noviembre de 2026</span></div>
+        </div>
+      </article>
+      <div class="stamp-actions"><button class="button button-primary" id="printButton">Imprimir / Guardar como PDF <span>↗</span></button><button class="button button-quiet" id="finishDay">Volver a los siete días</button></div>
+    </section>
+
+
+    <section id="mision2" class="screen theme-picnic hidden">
+      <button class="back-link" id="backCalendar2">← Volver a la colección</button>
+      <div class="gingham-band" aria-hidden="true"></div>
+      <div class="mission-kicker"><span>Estampa 2</span><span class="kicker-dot">✦</span><span>17 de noviembre</span></div>
+      <div class="mission-heading">
+        <p class="eyebrow">Misión 2 · El segundo capítulo</p>
+        <h2>El recuerdo de<br>un <em>ramo azul</em></h2>
+        <p class="mission-subtitle">Del 10 al 27 de diciembre de 2025 · De una pizzería pequeña a un parque que florece.</p>
+      </div>
+
+      <div class="sv-wrap">
+        <div class="story-phone">
+          <div class="sv-bars" id="svBars"></div>
+          <div class="sv-head"><span class="sv-avatar"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><strong>entre.flores.azules</strong><span id="svDate"></span></div>
+          <div class="sv-screen" id="svScreen" tabindex="0" role="button" aria-label="Siguiente historia">
+            <div class="sv-slide" id="svA"><img alt=""><div class="photo-empty"><span>📷</span><small></small></div></div>
+            <div class="sv-slide" id="svB"><img alt=""><div class="photo-empty"><span>📷</span><small></small></div></div>
+            <p class="sv-caption" id="svCaption"></p>
+          </div>
+        </div>
+        <div class="sv-nav"><button class="button button-quiet" id="svPrev" type="button" aria-label="Anterior">‹</button><button class="button button-quiet" id="svNext" type="button" aria-label="Siguiente">›</button></div>
+      </div>
+
+      <div class="story-grid">
+        <article class="story-card story-card-wide"><div class="story-icon">🍕</div><div><p class="story-label">Escena I · La primera cita</p><h3>Un miércoles, una pizza y una carrera</h3><p>Pasé varios días sin entender tus indirectas, hasta que quedamos en vernos un miércoles 10 de diciembre. Propuse una pizzería pequeña de Trujillo, para tener más privacidad. Llegué unos minutos tarde y corrí hasta tu casa, sin darme cuenta de que Mishell y su hijastra nos espiaban. Ella te dijo que me dieras una oportunidad, porque me había esforzado corriendo... jajaja.</p></div></article>
+        <article class="story-card"><div class="story-icon">🍍</div><p class="story-label">Escena II · Dos sabores</p><h3>Mitad piña, mitad carnívora</h3><p>Fuimos caminando a la pizzería. Tú pediste due sensazioni, con piña y pollo; yo, una carnívora. Una pizza, dos sabores y mucho de qué hablar. Esa noche te veías hermosa.</p></article>
+        <article class="story-card"><div class="story-icon">🧺</div><p class="story-label">Escena III · El picnic</p><h3>Pizza de Little Caesars y Gossip Girl</h3><p>El 27 de diciembre hicimos un picnic en el parque. Solo comimos pizza de Little Caesars y vimos Gossip Girl en mi laptop. Nada elaborado, y aun así perfecto.</p></article>
+        <article class="story-card"><div class="story-icon">💐</div><p class="story-label">Escena IV · El ramo</p><h3>Flores hasta tu puerta</h3><p>Ese mismo día fui a tu casa a regalarte el ramo azul. Sin saberlo, empezaba a florecer el nombre de esta historia.</p></article>
+        <article class="story-card"><div class="story-icon">🏰</div><p class="story-label">Escena V · El parque</p><h3>La torre y la declaración</h3><p>Esa tarde, en el parque, le dije a esa princesa lo que llevaba tiempo guardando: que estaba enamorado. El parque se quedó en silencio, y lo demás no necesitó palabras.</p></article>
+      </div>
+      <div class="chapter-quote fairy"><span class="quote-mark">“</span><p>Había una vez un caballero que no cargaba espada, sino un ramo azul. Cruzó la ciudad hasta la torre de su princesa, y no fue a ganar una batalla: fue a decirle que estaba enamorado.</p><span class="quote-caption">— Un cuento muy nuestro.</span></div>
+
+      <section class="quiz-section">
+        <div class="quiz-heading"><p class="eyebrow">Un pequeño juego</p><h3>¿Qué tanto recuerdas<br><em>de diciembre?</em></h3><p>Cuatro preguntas, y luego tendrás que reunir un ramo.</p></div>
+        <div id="quiz2"></div>
+        <div id="quizResult2" class="quiz-result hidden"><span class="result-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><h3>Segundo recuerdo desbloqueado</h3><p>Ahora toca reunir las flores del ramo.</p><button class="button button-primary" id="startBouquetGame">Reunir el ramo azul <span>↗</span></button></div>
+      </section>
+      <div class="mission-signoff"><span>♡</span><p>Y pensar que todo empezó con una carrera, una pizza a dos sabores y un ramo azul.</p></div>
+    </section>
+
+    <section id="minijuego2" class="screen theme-picnic hidden">
+      <button class="back-link" id="backToQuiz2">← Volver al recuerdo</button>
+      <div class="game-heading"><p class="eyebrow">Misión extra · Escena IV</p><h2>Arma tu <em>ramo azul</em></h2><p>Arrastra las flores al ramo y colócalas donde quieras. Puedes mover las que ya pusiste; si una sobra, suéltala fuera del ramo. Con ocho flores, una por cada mes, el ramo está listo.</p></div>
+      <div class="ketchup-game bouquet-game">
+        <p class="tear-hint" id="bqCount">0 de 8 flores</p>
+        <div class="bq-stage" id="bqStage"><svg class="bq-stems" id="bqStems" aria-hidden="true"></svg><div class="wrap"></div><div class="bow"></div></div>
+        <div class="bq-pal" id="bqPal" aria-label="Flores disponibles"></div>
+        <p class="game-feedback" id="bqFeedback" aria-live="polite"></p>
+        <button class="button button-quiet" id="bqClear" type="button">Vaciar el ramo</button>
+        <div class="months-card hidden" id="monthsCard"><span>✦</span><h3>Felices 8 meses de enamorados, princesa</h3><p>Aquel caballero llegó corriendo a una primera cita, y desde entonces sigue corriendo hacia ti. Gracias por cada uno de estos meses.</p><small>— Tu caballero</small></div>
+        <button class="button button-primary hidden" id="revealStamp2" type="button">Ver mi estampa <span>✧</span></button>
+      </div>
+    </section>
+
+    <section id="estampa2" class="screen theme-picnic hidden">
+      <button class="back-link" id="backMission2">← Volver al recuerdo</button>
+      <div class="stamp-intro"><p class="eyebrow">Un recuerdo para guardar</p><h2>Tu segunda<br><em>estampa</em></h2><p>Puedes imprimirla y guardarla.</p></div>
+      <article id="printableStamp2" class="print-stamp">
+        <div class="stamp-border">
+          <div class="stamp-topline"><span>Entre flores azules y recuerdos</span><span>Colección · 2 de 7</span></div>
+          <div class="stamp-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
+          <p class="stamp-overline">El segundo capítulo</p>
+          <h2>El recuerdo de<br>un <em>ramo azul</em></h2>
+          <div class="polaroids"><figure class="polaroid"><img src="assets2/cita-10-dic.jpg" alt="Primera cita" onerror="this.parentElement.classList.add('empty')"><figcaption>10 dic</figcaption></figure><figure class="polaroid"><img src="assets2/picnic.jpg" alt="Picnic en el parque" onerror="this.parentElement.classList.add('empty')"><figcaption>27 dic</figcaption></figure><figure class="polaroid"><img src="assets2/ramo-azul.jpg" alt="El ramo azul" onerror="this.parentElement.classList.add('empty')"><figcaption>el ramo</figcaption></figure></div>
+          <div class="stamp-illustration"><span>🏰</span><span class="stamp-sparkle">✧</span><span class="stamp-tomato">♡</span><span>⚔️</span></div>
+          <p class="stamp-date">10 y 27 de diciembre de 2025 · Trujillo</p>
+          <p class="stamp-story">Una pizza a dos sabores, un picnic sencillo y un ramo azul. Un caballero fue por su princesa, y desde entonces nada fue igual.</p>
+          <div class="stamp-rule"><span>✧</span></div>
+          <p class="stamp-dedication">“Felices 8 meses, princesa.”</p>
+          <div class="stamp-song"><img src="assets2/runnin.png" alt="Código QR para escuchar la canción en YouTube"><div><span class="song-eyebrow">Una canción para nosotros</span><strong>Come running home to you</strong><a href="https://www.youtube.com/watch?v=QRBOzK8kLyc" target="_blank" rel="noopener noreferrer">Escuchar en YouTube ↗</a><small>Escanea el código y vuelve a escucharla.</small></div></div>
+          <div class="stamp-footer"><span>Un día a la vez</span><span>17 de noviembre de 2026</span></div>
+        </div>
+      </article>
+      <div class="stamp-actions"><button class="button button-primary" id="printButton2">Imprimir / Guardar como PDF <span>↗</span></button><button class="button button-quiet" id="finishDay2">Volver a los siete días</button></div>
+    </section>
+
+    <footer class="site-footer"><span><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><p>Hecho con mucho amor, especialmente para ti.</p><span>♡</span></footer>
+  </main>
+  <audio id="bgMusic" src="assets2/cancion.mp3" loop preload="auto"></audio>
+  <button id="musicToggle" class="music-toggle" type="button" aria-label="Pausar música" hidden>♪</button>
+  <script src="app.js"></script>
+</body>
+</html>
