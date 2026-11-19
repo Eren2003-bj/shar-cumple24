@@ -3,8 +3,8 @@ const STORAGE_KEY = 'floresAzules_progreso_v1';
 const DAYS = [
   { day:16, title:'Donde comenzó todo', subtitle:'Un partido, una frase y un sachet de ketchup', status:'Disponible', unlocked:true },
   { day:17, title:'El recuerdo de un ramo azul', subtitle:'Detalles que hacen especial nuestra historia', status:'Disponible', unlocked:true },
-  { day:18, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos', status:'Próximamente', unlocked:false },
-  { day:19, title:'Conmigo y Contigo', subtitle:'Citas, fotografías y recuerdos', status:'Próximamente', unlocked:false },
+  { day:18, title:'Conmigo y Contigo', subtitle:'El día en que me dijiste que sí', status:'Disponible', unlocked:true },
+  { day:19, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos', status:'Próximamente', unlocked:false },
   { day:20, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░', status:'Próximamente', unlocked:false },
   { day:21, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░', status:'Próximamente', unlocked:false },
   { day:22, title:'Para ti, preciosa princesa', subtitle:'Tu cumpleaños y la misión final', status:'Próximamente', unlocked:false }
@@ -18,7 +18,7 @@ const QUESTIONS = [
 const QR_SONG_URL = 'https://www.youtube.com/watch?v=UuGrc3vvdMw';
 
 const $ = (selector) => document.querySelector(selector);
-const screens = ['#inicio','#calendario','#mision','#minijuego','#estampa','#mision2','#minijuego2','#estampa2'];
+const screens = ['#inicio','#calendario','#mision','#minijuego','#estampa','#mision2','#minijuego2','#estampa2','#mision3','#minijuego3','#estampa3'];
 let progress = loadProgress();
 let answered = new Set();
 
@@ -30,6 +30,9 @@ function saveProgress(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(progre
 function showScreen(id){
   screens.forEach(selector => $(selector).classList.toggle('hidden', selector !== id));
   document.body.classList.toggle('picnic', ['#mision2','#minijuego2','#estampa2'].includes(id));
+  document.body.classList.toggle('remo', ['#mision3','#minijuego3','#estampa3'].includes(id));
+  if(!['#minijuego3','#estampa3'].includes(id)) stopSong();
+  if(id === '#minijuego3') bgPause();
   svSync(id === '#mision2');
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -44,7 +47,7 @@ function renderDays(){
     card.className = `day-card ${available?'available':'locked'}`;
     card.disabled = !available;
     card.innerHTML = `<span class="day-number">${String(day.day).padStart(2,'0')}</span><span class="day-info"><small>Día ${index+1} · noviembre</small><strong>${day.title}</strong><span>${day.subtitle}</span></span><span class="day-status">${complete?'✓ Completado':available?'Abrir ↗':'🔒'}</span>`;
-    if(available) card.addEventListener('click', () => showScreen(day.day === 17 ? '#mision2' : '#mision'));
+    if(available) card.addEventListener('click', () => showScreen({17:'#mision2',18:'#mision3'}[day.day] || '#mision'));
     list.appendChild(card);
   });
   const count = progress.completed.length;
@@ -210,18 +213,18 @@ const slides = [$('#svA'), $('#svB')];
 slides.forEach(s => { const i = s.querySelector('img'); i.addEventListener('error', () => s.classList.add('empty')); i.addEventListener('load', () => s.classList.remove('empty')); });
 function svShow(d = 1, first = false){
   const s = STORIES[svIndex], next = first ? slides[0] : slides[1 - svCur], old = slides[svCur], cap = $('#svCaption');
-  const dur = matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : 560, ease = 'cubic-bezier(.22,.8,.2,1)';
+  const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, dur = reduce ? 450 : 560, ease = 'cubic-bezier(.22,.8,.2,1)';
   slides.forEach(sl => sl.getAnimations().forEach(a => a.cancel()));   // permite hacer clic rápido sin que se encimen
   if(!first) slides.forEach(sl => { if(sl !== old) sl.classList.remove('show'); });
-  next.classList.remove('empty'); const img = next.querySelector('img'); img.src = `assets2/${s.file}`; img.alt = s.text;
-  next.querySelector('small').textContent = `Coloca assets2/${s.file}`;
+  next.classList.remove('empty'); const img = next.querySelector('img'); img.src = `assets/${s.file}`; img.alt = s.text;
+  next.querySelector('small').textContent = `Coloca assets/${s.file}`;
   cap.classList.add('swap');
   next.style.zIndex = 2; old.style.zIndex = 1; next.classList.add('show');
   if(first) next.animate([{opacity:0},{opacity:1}], {duration:dur*.8, easing:'ease'});
   else {
     // la nueva historia entra deslizando; la anterior se desplaza un poco y se desvanece
-    next.animate([{transform:`translateX(${d*100}%)`},{transform:'translateX(0)'}], {duration:dur, easing:ease});
-    const out = old.animate([{transform:'translateX(0)',opacity:1},{transform:`translateX(${-d*30}%)`,opacity:.15}], {duration:dur, easing:ease, fill:'forwards'});
+    next.animate([{transform:`translateX(${reduce?0:d*100}%)`,opacity:reduce?0:1},{transform:'translateX(0)',opacity:1}], {duration:dur, easing:ease});
+    const out = old.animate([{transform:'translateX(0)',opacity:1},{transform:`translateX(${reduce?0:-d*30}%)`,opacity:reduce?0:.15}], {duration:dur, easing:ease, fill:'forwards'});
     out.onfinish = () => { old.classList.remove('show'); out.cancel(); };
   }
   setTimeout(() => { cap.textContent = s.text; cap.classList.remove('swap'); }, first ? 0 : dur*.45);
@@ -347,3 +350,48 @@ $('#revealStamp2').addEventListener('click', () => showScreen('#estampa2'));
 $('#backMission2').addEventListener('click', () => showScreen('#mision2'));
 $('#finishDay2').addEventListener('click', () => {renderDays();showScreen('#calendario');});
 $('#printButton2').addEventListener('click', () => window.print());
+
+// ───────── DÍA 3: San Remo ─────────
+let songFrame = null, bgWasPlaying = false;
+function bgPause(){ if(!music.paused){ bgWasPlaying = true; music.pause(); } }
+function killFrame(){ if(songFrame){ songFrame.remove(); songFrame = null; } }
+function stopSong(){ killFrame(); if(bgWasPlaying){ bgWasPlaying = false; music.play().catch(() => {}); } }
+function playSong(){
+  if(songFrame) return;
+  songFrame = document.createElement('iframe');
+  songFrame.src = 'https://www.youtube-nocookie.com/embed/X-9ENGPgrc4?autoplay=1&rel=0&playsinline=1';
+  songFrame.allow = 'autoplay; encrypted-media'; songFrame.title = 'With Me, de Sum 41';
+  $('#songSlot').appendChild(songFrame);
+}
+(function buildRemoDecor(){
+  const bokeh = Array.from({length:16}, () => `<i style="left:${rnd(0,100)}%;top:${rnd(0,100)}%;--s:${rnd(16,52)}px;--d:${rnd(5,11)}s;animation-delay:-${rnd(0,9)}s"></i>`).join('');
+  const candle = '<div class="rd candle"><svg viewBox="0 0 40 120"><ellipse class="flame" cx="20" cy="17" rx="6" ry="12" fill="#ffd27a"/><rect x="10" y="32" width="20" height="86" rx="3" fill="#f6efe2"/></svg></div>';
+  const glass = '<div class="rd glass"><svg viewBox="0 0 60 120"><path d="M8 4h44c2 28-6 50-22 52C14 54 6 32 8 4Z" fill="rgba(255,255,255,.22)" stroke="#f3e6c8" stroke-width="2"/><path d="M10 14h40c0 12-4 22-20 24C14 36 10 26 10 14Z" fill="#a3294a" opacity=".75"/><path d="M30 56v52M14 114h32" stroke="#f3e6c8" stroke-width="3" stroke-linecap="round"/></svg></div>';
+  $('#remoDecor').innerHTML = bokeh + candle + glass;
+})();
+const ringBox = $('#ringBox'), lidBtn = $('#lidBtn');
+function resetRings(){
+  killFrame(); ringBox.className = 'ring-box'; lidBtn.disabled = true;
+  $('#ringHint').textContent = '¿Qué habrá debajo del plato?';
+  $('#songCard').classList.add('hidden'); $('#revealStamp3').classList.add('hidden');
+}
+$('#plateBtn').addEventListener('click', () => {
+  ringBox.classList.add('plate-off'); lidBtn.disabled = false; lidBtn.focus();
+  $('#ringHint').textContent = 'Ahora ábrela con cuidado';
+});
+lidBtn.addEventListener('click', () => {
+  if(ringBox.classList.contains('open')) return;
+  ringBox.classList.add('open'); lidBtn.disabled = true;
+  $('#ringHint').textContent = 'Un escudo para él, una corona para ella';
+  playSong(); $('#songCard').classList.remove('hidden'); $('#revealStamp3').classList.remove('hidden');
+  if(navigator.vibrate) navigator.vibrate(30);
+});
+$('#startRingGame').addEventListener('click', () => { resetRings(); showScreen('#minijuego3'); });
+$('#backCalendar3').addEventListener('click', () => {renderDays();showScreen('#calendario');});
+$('#backToMission3').addEventListener('click', () => showScreen('#mision3'));
+$('#backMission3').addEventListener('click', () => showScreen('#mision3'));
+$('#revealStamp3').addEventListener('click', () => {
+  progress.completed = [...new Set([...progress.completed,18])]; saveProgress(); renderDays(); showScreen('#estampa3');
+});
+$('#finishDay3').addEventListener('click', () => {renderDays();showScreen('#calendario');});
+$('#printButton3').addEventListener('click', () => window.print());
