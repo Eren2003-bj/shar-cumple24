@@ -1,13 +1,15 @@
 
 const STORAGE_KEY = 'floresAzules_progreso_v1';
 const DAYS = [
-  { day:16, title:'Donde comenzó todo', subtitle:'Un partido, una frase y un sachet de ketchup', status:'Disponible', unlocked:true },
-  { day:17, title:'El recuerdo de un ramo azul', subtitle:'Detalles que hacen especial nuestra historia', status:'Disponible', unlocked:true },
-  { day:18, title:'Conmigo y Contigo', subtitle:'El día en que me dijiste que sí', status:'Disponible', unlocked:true },
-  { day:19, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos', status:'Próximamente', unlocked:false },
-  { day:20, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░', status:'Próximamente', unlocked:false },
-  { day:21, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░', status:'Próximamente', unlocked:false },
-  { day:22, title:'Para ti, preciosa princesa', subtitle:'Tu cumpleaños y la misión final', status:'Próximamente', unlocked:false }
+  // screen = pantalla de entrada · group = todas las pantallas del día · assets = carpeta de su multimedia y su cancion.mp3
+  // Para activar un día nuevo basta añadirle esas tres propiedades; su fecha lo desbloquea sola.
+  { day:16, title:'Donde comenzó todo', subtitle:'Un partido, una frase y un sachet de ketchup', screen:'#mision', group:['#mision','#minijuego','#estampa'], assets:'assets' },
+  { day:17, title:'El recuerdo de un ramo azul', subtitle:'Detalles que hacen especial nuestra historia', screen:'#mision2', group:['#mision2','#minijuego2','#estampa2'], assets:'assets2' },
+  { day:18, title:'Conmigo y Contigo', subtitle:'El día en que me dijiste que sí', screen:'#mision3', group:['#mision3','#minijuego3','#estampa3'], assets:'assets3' },
+  { day:19, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos' },
+  { day:20, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░' },
+  { day:21, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░' },
+  { day:22, title:'Para ti, preciosa princesa', subtitle:'Tu cumpleaños y la misión final' }
 ];
 const QUESTIONS = [
   { question:'¿Qué actividad reunió a nuestros amigos aquel 30 de noviembre?', options:['Una tarde de cine','Un partido de vóley','Una salida a una pizzería'], answer:1, explanation:'¡Un partido de vóley! Una amiga preparó aquel encuentro porque creía que éramos tal para cual.' },
@@ -18,22 +20,30 @@ const QUESTIONS = [
 const QR_SONG_URL = 'https://www.youtube.com/watch?v=UuGrc3vvdMw';
 
 const $ = (selector) => document.querySelector(selector);
-const screens = ['#inicio','#calendario','#mision','#minijuego','#estampa','#mision2','#minijuego2','#estampa2','#mision3','#minijuego3','#estampa3'];
+const screens = [...document.querySelectorAll('section.screen')].map(s => '#' + s.id);
 let progress = loadProgress();
-let answered = new Set();
 
 function loadProgress(){
   try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || { completed: [] }; }
   catch { return { completed: [] }; }
 }
 function saveProgress(){ localStorage.setItem(STORAGE_KEY, JSON.stringify(progress)); }
-function showScreen(id){
+const YEAR = 2026;
+const PREVIEW = new URLSearchParams(location.search).has('preview');   // index.html?preview abre todos los días para probar
+const isOpen = day => PREVIEW || new Date() >= new Date(YEAR, 10, day.day);   // se desbloquea a las 00:00 de su fecha
+const dayOfScreen = id => DAYS.find(d => d.group && d.group.includes(id));
+
+function showScreen(id, { push = true } = {}){
+  if(!screens.includes(id)) id = '#inicio';
+  const day = dayOfScreen(id);
+  if(day && !isOpen(day)) id = '#calendario';
+  if(id === '#calendario') renderDays();
   screens.forEach(selector => $(selector).classList.toggle('hidden', selector !== id));
-  document.body.classList.toggle('picnic', ['#mision2','#minijuego2','#estampa2'].includes(id));
-  document.body.classList.toggle('remo', ['#mision3','#minijuego3','#estampa3'].includes(id));
+  document.body.dataset.theme = $(id).dataset.theme || '';
   if(!['#minijuego3','#estampa3'].includes(id)) stopSong();
   if(id === '#minijuego3') bgPause();
   svSync(id === '#mision2');
+  if(push && location.hash !== id) history.pushState(null, '', id);
   window.scrollTo({top:0,behavior:'smooth'});
 }
 function renderDays(){
@@ -41,13 +51,13 @@ function renderDays(){
   list.innerHTML = '';
   DAYS.forEach((day,index) => {
     const complete = progress.completed.includes(day.day);
-    const available = day.unlocked;
+    const available = !!day.screen && isOpen(day);
     const card = document.createElement('button');
     card.type = 'button';
     card.className = `day-card ${available?'available':'locked'}`;
     card.disabled = !available;
     card.innerHTML = `<span class="day-number">${String(day.day).padStart(2,'0')}</span><span class="day-info"><small>Día ${index+1} · noviembre</small><strong>${day.title}</strong><span>${day.subtitle}</span></span><span class="day-status">${complete?'✓ Completado':available?'Abrir ↗':'🔒'}</span>`;
-    if(available) card.addEventListener('click', () => showScreen({17:'#mision2',18:'#mision3'}[day.day] || '#mision'));
+    if(available) card.addEventListener('click', () => { playDaySong(day); showScreen(day.screen); });
     list.appendChild(card);
   });
   const count = progress.completed.length;
@@ -177,19 +187,27 @@ tapBtn.addEventListener('click', () => {
   };
   requestAnimationFrame(step);
 });
-// MÚSICA DE FONDO
+// MÚSICA: cada día tiene su canción (assets/, assets2/, assets3/… + /cancion.mp3) y empieza al abrir ese día, no antes.
 const music = $('#bgMusic');
 const musicBtn = $('#musicToggle');
 music.volume = 0.6;
-
-$('#startButton').addEventListener('click', () => {
-  music.play().then(() => { musicBtn.hidden = false; }).catch(() => {});
-});
+let userPaused = false;   // si ella la pausa a mano, los días siguientes no la reanudan solos
+function syncMusicBtn(){
+  musicBtn.hidden = !music.getAttribute('src');
+  musicBtn.classList.toggle('off', music.paused);
+  musicBtn.setAttribute('aria-label', music.paused ? 'Reproducir música' : 'Pausar música');
+}
+function playDaySong(day, autoplay = true){
+  const src = `${day.assets}/cancion.mp3`;
+  if(music.getAttribute('src') !== src) music.src = src;
+  if(autoplay && !userPaused) music.play().catch(() => {});
+  syncMusicBtn();
+}
+['play','pause'].forEach(type => music.addEventListener(type, syncMusicBtn));
 musicBtn.addEventListener('click', () => {
-  const paused = music.paused;
-  paused ? music.play() : music.pause();
-  musicBtn.classList.toggle('off', !paused);
-  musicBtn.setAttribute('aria-label', paused ? 'Pausar música' : 'Reproducir música');
+  if(songFrame) return;   // mientras suena el video del día 3 no se mezclan
+  if(music.paused){ userPaused = false; music.play().catch(() => {}); }
+  else { userPaused = true; music.pause(); }
 });
 
 // ───────── DÍA 2 ─────────
@@ -395,3 +413,13 @@ $('#revealStamp3').addEventListener('click', () => {
 });
 $('#finishDay3').addEventListener('click', () => {renderDays();showScreen('#calendario');});
 $('#printButton3').addEventListener('click', () => window.print());
+
+// ───────── NAVEGACIÓN: botón "atrás" del celular y recarga en la misma pantalla ─────────
+window.addEventListener('popstate', () => showScreen(location.hash || '#inicio', { push:false }));
+(function restoreFromHash(){
+  const id = location.hash;
+  if(!id || id === '#inicio' || !screens.includes(id)) return;
+  const day = dayOfScreen(id);
+  if(day && isOpen(day)) playDaySong(day, false);   // sin autoplay: el navegador lo bloquea sin un toque previo
+  showScreen(id, { push:false });
+})();

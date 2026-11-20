@@ -143,8 +143,8 @@ h1 em,h2 em,.quiz-heading h3 em{color:var(--rose);font-style:italic;font-weight:
 /* ───────── MINIJUEGO: sachet ───────── */
 .game-heading{text-align:center;margin:36px auto 26px;max-width:560px}
 .game-heading>p:last-child{color:var(--muted);margin:16px 0 0}
-.ketchup-game{max-width:500px;margin:0 auto 60px;padding:30px 24px 32px;text-align:center;border-radius:var(--r-lg);background:linear-gradient(180deg,#fff,#e9f1f8);border:1px solid var(--line);box-shadow:var(--shadow);position:relative}
-.tear-hint{font:500 24px var(--hand);color:var(--rose);margin:0 0 20px;min-height:30px}
+.game-card{max-width:500px;margin:0 auto 60px;padding:30px 24px 32px;text-align:center;border-radius:var(--r-lg);background:linear-gradient(180deg,#fff,#e9f1f8);border:1px solid var(--line);box-shadow:var(--shadow);position:relative}
+.game-hint{font:500 24px var(--hand);color:var(--rose);margin:0 0 20px;min-height:30px}
 .sachet{--p:0;--x:calc(var(--p)*100%);position:relative;width:min(250px,70vw);margin:56px auto 22px;transform:rotate(-2deg);filter:drop-shadow(0 20px 20px rgba(20,48,79,.25))}
 .sachet-top{position:relative;height:48px;cursor:grab;touch-action:none;user-select:none}
 .sachet-top:active{cursor:grabbing}
@@ -172,7 +172,7 @@ h1 em,h2 em,.quiz-heading h3 em{color:var(--rose);font-style:italic;font-weight:
 @keyframes fall{to{transform:translate(30px,160px) rotate(40deg);opacity:0}}
 .sachet.opened .sachet-notch{opacity:0}
 .game-feedback{min-height:56px;margin:6px auto 14px;max-width:360px;color:var(--ink)}
-.ketchup-game .button{margin:4px}
+.game-card .button{margin:4px}
 
 /* estampa */
 .stamp-intro{text-align:center;padding:30px 0 22px}
@@ -239,9 +239,9 @@ h1 em,h2 em,.quiz-heading h3 em{color:var(--rose);font-style:italic;font-weight:
 
 /* ───────── DÍA 2: mantel rojo, flores y caja naranja ───────── */
 :root{--check:rgba(196,65,75,.2)}
-body.picnic{background:linear-gradient(90deg,var(--check) 50%,transparent 50%),linear-gradient(var(--check) 50%,transparent 50%),#fffaf4;background-size:64px 64px}
+body[data-theme="picnic"]{background:linear-gradient(90deg,var(--check) 50%,transparent 50%),linear-gradient(var(--check) 50%,transparent 50%),#fffaf4;background-size:64px 64px}
 .picnic-decor{display:none;position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-body.picnic .picnic-decor{display:block}
+body[data-theme="picnic"] .picnic-decor{display:block}
 .pd{position:absolute;filter:drop-shadow(0 4px 6px rgba(20,48,79,.28))}.pd svg{display:block;width:100%;height:100%}
 .theme-picnic .mission-heading,.theme-picnic .game-heading,.theme-picnic .stamp-intro,.theme-picnic .mission-signoff p{background:rgba(255,253,249,.93);border-radius:var(--r-md);padding:22px 24px;box-shadow:var(--shadow-sm)}
 .theme-picnic .mission-signoff p{padding:14px 20px}
@@ -249,7 +249,7 @@ body.picnic .picnic-decor{display:block}
 .theme-picnic .mission-kicker{display:inline-flex;padding:2px 18px}
 .gingham-band{height:24px;margin:6px 0 12px;border-radius:4px;background:#fffdf9 linear-gradient(90deg,rgba(196,65,75,.45) 50%,transparent 50%),linear-gradient(rgba(196,65,75,.45) 50%,transparent 50%);background-size:24px 24px}
 .theme-picnic .story-card,.theme-picnic .chapter-quote,.theme-picnic .quiz-section{background:var(--paper);border:2px dashed #d99aa1;box-shadow:0 0 0 5px var(--paper),var(--shadow-sm)}
-.theme-picnic .ketchup-game{background:rgba(255,253,249,.95)}
+.theme-picnic .game-card{background:rgba(255,253,249,.95)}
 /* historias */
 .sv-wrap{max-width:340px;margin:10px auto 34px}
 .story-phone{background:var(--navy);border-radius:30px;padding:10px;box-shadow:var(--shadow)}
@@ -276,7 +276,7 @@ body.picnic .picnic-decor{display:block}
 .sv-nav{display:flex;align-items:center;justify-content:space-between;margin-top:12px}
 .sv-nav .button{padding:8px 18px;font-size:20px}.sv-hint{font-size:13px;color:var(--muted)}
 /* ramo interactivo */
-.bouquet-game .tear-hint{font-size:28px}
+.bouquet-game .game-hint{font-size:28px}
 .bq-stage{position:relative;width:min(320px,100%);height:340px;margin:6px auto 14px;border-radius:var(--r-md);background:rgba(219,231,243,.4);border:1.5px dashed #b7c9dc;touch-action:none;user-select:none;overflow:hidden}
 .bq-stems{position:absolute;inset:0;width:100%;height:100%}
 .bq-stage .wrap{position:absolute;z-index:1;left:50%;bottom:0;width:150px;height:110px;margin-left:-75px;clip-path:polygon(0 0,100% 0,62% 100%,38% 100%);background:#fffdf9 linear-gradient(90deg,rgba(196,65,75,.5) 50%,transparent 50%),linear-gradient(rgba(196,65,75,.5) 50%,transparent 50%);background-size:20px 20px}
@@ -308,23 +308,23 @@ body.picnic .picnic-decor{display:block}
 }
 
 /* ───────── DÍA 3: San Remo, cena de gala ───────── */
-body.remo{background:radial-gradient(circle at 12% 8%,rgba(240,190,110,.28),transparent 38%),radial-gradient(circle at 90% 92%,rgba(240,190,110,.2),transparent 42%),linear-gradient(160deg,#1b1a33,#3a1f2f 60%,#1b2440)}
+body[data-theme="remo"]{background:radial-gradient(circle at 12% 8%,rgba(240,190,110,.28),transparent 38%),radial-gradient(circle at 90% 92%,rgba(240,190,110,.2),transparent 42%),linear-gradient(160deg,#1b1a33,#3a1f2f 60%,#1b2440)}
 .remo-decor{display:none;position:fixed;inset:0;z-index:-1;pointer-events:none;overflow:hidden}
-body.remo .remo-decor{display:block}
+body[data-theme="remo"] .remo-decor{display:block}
 .remo-decor i{position:absolute;width:var(--s);height:var(--s);border-radius:50%;background:radial-gradient(circle,rgba(255,215,140,.55),rgba(255,215,140,0) 70%);animation:bokeh var(--d) ease-in-out infinite alternate}
 @keyframes bokeh{from{opacity:.15;transform:translateY(0) scale(.9)}to{opacity:.9;transform:translateY(-22px) scale(1.15)}}
 .rd{position:absolute;opacity:.9}.rd svg{display:block;width:100%;height:100%}
 .rd.candle{left:3%;bottom:0;width:46px;height:150px}.rd.glass{right:4%;bottom:0;width:64px;height:130px}
 .flame{transform-origin:50% 100%;animation:flick 1.4s ease-in-out infinite alternate}
 @keyframes flick{from{transform:scale(1,.9) rotate(-3deg)}to{transform:scale(.92,1.08) rotate(3deg)}}
-body.remo .topbar,body.remo .site-footer{color:#dcd2e2;border-color:rgba(240,190,110,.3)}
-body.remo .wordmark{color:#fbf8f2}
+body[data-theme="remo"] .topbar,body[data-theme="remo"] .site-footer{color:#dcd2e2;border-color:rgba(240,190,110,.3)}
+body[data-theme="remo"] .wordmark{color:#fbf8f2}
 .theme-remo .mission-heading,.theme-remo .game-heading,.theme-remo .stamp-intro,.theme-remo .mission-signoff p{background:rgba(255,253,249,.94);border-radius:var(--r-md);padding:22px 24px;box-shadow:var(--shadow-sm)}
 .theme-remo .mission-signoff p{padding:14px 20px}
 .theme-remo .back-link,.theme-remo .mission-kicker{background:rgba(255,253,249,.94);padding:8px 16px;border-radius:999px}
 .theme-remo .mission-kicker{display:inline-flex;padding:2px 18px}
 .theme-remo .story-card,.theme-remo .quiz-result{background:var(--paper);border:1px solid var(--gold);box-shadow:0 0 0 4px var(--paper),0 0 0 5px var(--gold),var(--shadow-sm)}
-.theme-remo .ketchup-game{background:rgba(255,253,249,.95)}
+.theme-remo .game-card{background:rgba(255,253,249,.95)}
 .remo-cta{margin:34px 0}
 /* líneas que nos representan */
 .lines-art{margin:0 0 26px;padding:16px 18px 10px;background:rgba(255,253,249,.94);border-radius:var(--r-lg);box-shadow:var(--shadow-sm)}

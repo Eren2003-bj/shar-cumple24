@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=4">
+  <link rel="stylesheet" href="styles.css?v=5">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="flor" viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="27" rx="14" ry="21"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(72 50 50)" fill-opacity=".92"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(144 50 50)"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(216 50 50)" fill-opacity=".92"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(288 50 50)"/></g><circle cx="50" cy="50" r="9" fill="#f6e2b3"/><circle cx="50" cy="50" r="4" fill="#c9a96a"/></symbol></svg>
@@ -70,7 +70,7 @@
 
       <article class="memory-post">
         <div class="post-head"><div class="post-avatar"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div><div><strong>entre.flores.azules</strong><span>30 de noviembre de 2025 · un día cualquiera…</span></div><span class="post-more">•••</span></div>
-        <img class="post-photo" src="assets/primer-encuentro-grupal.jpg" alt="Fotografía grupal después del partido de vóley del 30 de noviembre de 2025">
+        <img loading="lazy" decoding="async" class="post-photo" src="assets/primer-encuentro-grupal.jpg" alt="Fotografía grupal después del partido de vóley del 30 de noviembre de 2025">
         <div class="post-actions"><span>♡　○　➤</span><span>✧</span></div>
         <div class="post-caption"><strong>entre.flores.azules</strong> Una foto grupal. Un partido de vóley. Un montón de personas que todavía no sabían lo que la vida estaba preparando. <em>Y nosotros, sin sospechar nuestro destino.</em></div>
         <p class="post-location">Memoria · Trujillo</p>
@@ -87,8 +87,8 @@
     <section id="minijuego" class="screen hidden">
       <button class="back-link" id="backToQuiz">← Volver al recuerdo</button>
       <div class="game-heading"><p class="eyebrow">Misión extra · Escena III</p><h2>El sachet <em>de ketchup</em></h2><p>Rasga el sobre desde la muesca y arrastra hacia la derecha, con un movimiento suave. Abrirlo con calma es parte del recuerdo.</p></div>
-      <div class="ketchup-game" id="ketchupGame">
-        <p class="tear-hint" id="tearHint">Empieza en la muesca de la izquierda</p>
+      <div class="game-card" id="ketchupGame">
+        <p class="game-hint" id="tearHint">Empieza en la muesca de la izquierda</p>
         <div class="sachet" id="ketchupPacket">
           <div class="sachet-bloom" aria-hidden="true"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
           <div class="sachet-top" id="tearTrack" role="slider" tabindex="0" aria-label="Rasgar el sachet de izquierda a derecha" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" aria-valuetext="Cerrado">
@@ -112,14 +112,14 @@
           <div class="stamp-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
           <p class="stamp-overline">El primer capítulo</p>
           <h2>Donde comenzó<br><em>todo</em></h2>
-          <img class="stamp-memory-photo" src="assets/primer-encuentro-grupal.jpg" alt="La foto grupal del día del partido">
+          <img loading="lazy" decoding="async" class="stamp-memory-photo" src="assets/primer-encuentro-grupal.jpg" alt="La foto grupal del día del partido">
           <div class="stamp-illustration"><span class="stamp-ball">👸</span><span class="stamp-sparkle">✧</span><span class="stamp-tomato">♡</span><span class="stamp-sword">⚔️</span></div>
           <p class="stamp-date">30 de noviembre de 2025 · Trujillo</p>
           <p class="stamp-story">Un partido de vóley, una frase inesperada sobre Shingeki y un sachet de ketchup. No sabíamos que aquel día estábamos comenzando una historia.</p>
           <div class="stamp-rule"><span>✧</span></div>
           <p class="stamp-dedication">“El comienzo más importante<br>se escondía en los detalles más pequeños.”</p>
           <div class="stamp-song" aria-label="Canción especial: Sabes una cosa, de Luis Miguel">
-            <img src="assets/qr-sabes-una-cosa-luis-miguel.png" alt="Código QR para escuchar Sabes una cosa de Luis Miguel en YouTube">
+            <img loading="lazy" decoding="async" src="assets/qr-sabes-una-cosa-luis-miguel.png" alt="Código QR para escuchar Sabes una cosa de Luis Miguel en YouTube">
             <div><span class="song-eyebrow">Una canción para nosotros</span><strong>Sabes una cosa · Luis Miguel</strong><a href="https://www.youtube.com/watch?v=UuGrc3vvdMw" target="_blank" rel="noopener noreferrer">Escuchar en YouTube ↗</a><small>Escanea el código y vuelve a escucharla.</small></div>
           </div>
           <div class="stamp-footer"><span>Un día a la vez</span><span>16 de noviembre de 2026</span></div>
@@ -129,7 +129,7 @@
     </section>
 
 
-    <section id="mision2" class="screen theme-picnic hidden">
+    <section id="mision2" data-theme="picnic" class="screen theme-picnic hidden">
       <button class="back-link" id="backCalendar2">← Volver a la colección</button>
       <div class="gingham-band" aria-hidden="true"></div>
       <div class="mission-kicker"><span>Estampa 2</span><span class="kicker-dot">✦</span><span>17 de noviembre</span></div>
@@ -169,11 +169,11 @@
       <div class="mission-signoff"><span>♡</span><p>Y pensar que todo empezó con una carrera, una pizza a dos sabores y un ramo azul.</p></div>
     </section>
 
-    <section id="minijuego2" class="screen theme-picnic hidden">
+    <section id="minijuego2" data-theme="picnic" class="screen theme-picnic hidden">
       <button class="back-link" id="backToQuiz2">← Volver al recuerdo</button>
       <div class="game-heading"><p class="eyebrow">Misión extra · Escena IV</p><h2>Arma tu <em>ramo azul</em></h2><p>Arrastra las flores al ramo y colócalas donde quieras. Puedes mover las que ya pusiste; si una sobra, suéltala fuera del ramo. Con ocho flores, una por cada mes, el ramo está listo.</p></div>
-      <div class="ketchup-game bouquet-game">
-        <p class="tear-hint" id="bqCount">0 de 8 flores</p>
+      <div class="game-card bouquet-game">
+        <p class="game-hint" id="bqCount">0 de 8 flores</p>
         <div class="bq-stage" id="bqStage"><svg class="bq-stems" id="bqStems" aria-hidden="true"></svg><div class="wrap"></div><div class="bow"></div></div>
         <div class="bq-pal" id="bqPal" aria-label="Flores disponibles"></div>
         <p class="game-feedback" id="bqFeedback" aria-live="polite"></p>
@@ -183,7 +183,7 @@
       </div>
     </section>
 
-    <section id="estampa2" class="screen theme-picnic hidden">
+    <section id="estampa2" data-theme="picnic" class="screen theme-picnic hidden">
       <button class="back-link" id="backMission2">← Volver al recuerdo</button>
       <div class="stamp-intro"><p class="eyebrow">Un recuerdo para guardar</p><h2>Tu segunda<br><em>estampa</em></h2><p>Puedes imprimirla y guardarla.</p></div>
       <article id="printableStamp2" class="print-stamp">
@@ -192,20 +192,20 @@
           <div class="stamp-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
           <p class="stamp-overline">El segundo capítulo</p>
           <h2>El recuerdo de<br>un <em>ramo azul</em></h2>
-          <div class="polaroids"><figure class="polaroid"><img src="assets2/cita-10-dic.jpg" alt="Primera cita" onerror="this.parentElement.classList.add('empty')"><figcaption>10 dic</figcaption></figure><figure class="polaroid"><img src="assets2/picnic.jpg" alt="Picnic en el parque" onerror="this.parentElement.classList.add('empty')"><figcaption>27 dic</figcaption></figure><figure class="polaroid"><img src="assets2/ramo-azul.jpg" alt="El ramo azul" onerror="this.parentElement.classList.add('empty')"><figcaption>el ramo</figcaption></figure></div>
+          <div class="polaroids"><figure class="polaroid"><img loading="lazy" decoding="async" src="assets2/cita-10-dic.jpg" alt="Primera cita" onerror="this.parentElement.classList.add('empty')"><figcaption>10 dic</figcaption></figure><figure class="polaroid"><img loading="lazy" decoding="async" src="assets2/picnic.jpg" alt="Picnic en el parque" onerror="this.parentElement.classList.add('empty')"><figcaption>27 dic</figcaption></figure><figure class="polaroid"><img loading="lazy" decoding="async" src="assets2/ramo-azul.jpg" alt="El ramo azul" onerror="this.parentElement.classList.add('empty')"><figcaption>el ramo</figcaption></figure></div>
           <div class="stamp-illustration"><span>🏰</span><span class="stamp-sparkle">✧</span><span class="stamp-tomato">♡</span><span>⚔️</span></div>
           <p class="stamp-date">10 y 27 de diciembre de 2025 · Trujillo</p>
           <p class="stamp-story">Una pizza a dos sabores, un picnic con mantel y un ramo azul. Un caballero fue por su princesa, y desde entonces nada fue igual.</p>
           <div class="stamp-rule"><span>✧</span></div>
           <p class="stamp-dedication">“Felices 8 meses, princesa.”</p>
-          <div class="stamp-song"><img src="assets2/runnin.png" alt="Código QR para escuchar la canción en YouTube"><div><span class="song-eyebrow">Una canción para nosotros</span><strong>Come running home to you</strong><a href="https://www.youtube.com/watch?v=QRBOzK8kLyc" target="_blank" rel="noopener noreferrer">Escuchar en YouTube ↗</a><small>Escanea el código y vuelve a escucharla.</small></div></div>
+          <div class="stamp-song"><img loading="lazy" decoding="async" src="assets2/runnin.png" alt="Código QR para escuchar la canción en YouTube"><div><span class="song-eyebrow">Una canción para nosotros</span><strong>Come running home to you</strong><a href="https://www.youtube.com/watch?v=QRBOzK8kLyc" target="_blank" rel="noopener noreferrer">Escuchar en YouTube ↗</a><small>Escanea el código y vuelve a escucharla.</small></div></div>
           <div class="stamp-footer"><span>Un día a la vez</span><span>17 de noviembre de 2026</span></div>
         </div>
       </article>
       <div class="stamp-actions"><button class="button button-primary" id="printButton2">Imprimir / Guardar como PDF <span>↗</span></button><button class="button button-quiet" id="finishDay2">Volver a los siete días</button></div>
     </section>
 
-    <section id="mision3" class="screen theme-remo hidden">
+    <section id="mision3" data-theme="remo" class="screen theme-remo hidden">
       <button class="back-link" id="backCalendar3">← Volver a la colección</button>
       <div class="mission-kicker"><span>Estampa 3</span><span class="kicker-dot">✦</span><span>18 de noviembre</span></div>
       <div class="mission-heading">
@@ -224,20 +224,20 @@
         <figcaption>Dos caminos distintos que aprendieron a ir juntos.</figcaption>
       </figure>
       <div class="story-grid">
-        <article class="story-card story-card-wide"><div class="story-icon">🕰️</div><div><p class="story-label">Los meses difíciles</p><h3>Esperar el momento justo</h3><p>Enero, febrero y parte de marzo no fueron fáciles,un trabajo agotador para mí, momentos duros para la familia y mucho por aprender para encajar. Justo en medio de todo eso supe que quería hacer las cosas bien.</p></div></article>
+        <article class="story-card story-card-wide"><div class="story-icon">🕰️</div><div><p class="story-label">Los meses difíciles</p><h3>Esperar el momento justo</h3><p>Enero, febrero y parte de marzo no fueron fáciles, un trabajo agotador para mí, momentos duros para la familia y mucho por aprender para encajar. Justo en medio de todo eso supe que quería hacer las cosas bien.</p></div></article>
         <article class="story-card"><div class="story-icon">📅</div><p class="story-label">La fecha</p><h3>Marzo, el mes clave</h3><p>Me rompí la cabeza buscando un día que fuera sorpresa, lejos de cumpleaños y de fechas especiales.</p></article>
         <article class="story-card"><div class="story-icon">🍕</div><p class="story-label">San Remo</p><h3>Una cena elegante</h3><p>Nos vestimos para la ocasión y fuimos a San Remo, una pizzería con mucho encanto. Pizza, brindis y risas hasta que llegó el momento...</p></article>
       </div>
-      <div class="polaroids"><figure class="polaroid"><img src="assets3/sanremo1.jpg" alt="Selfie en San Remo"><figcaption>brindis</figcaption></figure><figure class="polaroid"><img src="assets3/pizza.jpg" alt="Pizza a dos sabores en San Remo"><figcaption>la pizza</figcaption></figure><figure class="polaroid"><img src="assets3/sanremo3.jpg" alt="Nosotros en San Remo"><figcaption>Nosotros</figcaption></figure></div>
+      <div class="polaroids"><figure class="polaroid"><img loading="lazy" decoding="async" src="assets3/sanremo1.jpg" alt="Selfie en San Remo" onerror="this.parentElement.classList.add('empty')"><figcaption>brindis</figcaption></figure><figure class="polaroid"><img loading="lazy" decoding="async" src="assets3/pizza.jpg" alt="Pizza a dos sabores en San Remo" onerror="this.parentElement.classList.add('empty')"><figcaption>la pizza</figcaption></figure><figure class="polaroid"><img loading="lazy" decoding="async" src="assets3/sanremo3.jpg" alt="Nosotros en San Remo" onerror="this.parentElement.classList.add('empty')"><figcaption>Nosotros</figcaption></figure></div>
       <div class="quiz-result remo-cta"><span class="result-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><h3>Hoy no hay preguntas</h3><p>Solo un postre por destapar.</p><button class="button button-primary" id="startRingGame">Destapar el postre <span>↗</span></button></div>
       <div class="mission-signoff"><span>♡</span></div>
     </section>
 
-    <section id="minijuego3" class="screen theme-remo hidden">
+    <section id="minijuego3" data-theme="remo" class="screen theme-remo hidden">
       <button class="back-link" id="backToMission3">← Volver al recuerdo</button>
       <div class="game-heading"><p class="eyebrow">Misión extra · Escena IV</p><h2>Tu <em>postre</em></h2><p>Destapa el plato y abre con cuidado lo que hay debajo.</p></div>
-      <div class="ketchup-game ring-game">
-        <p class="tear-hint" id="ringHint">¿Qué habrá debajo del plato?</p>
+      <div class="game-card ring-game">
+        <p class="game-hint" id="ringHint">¿Qué habrá debajo del plato?</p>
         <div class="ring-box" id="ringBox">
           <span class="sp s1">✦</span><span class="sp s2">✧</span><span class="sp s3">✦</span><span class="sp s4">✧</span>
           <div class="rb-rings"><div class="rg rg-a"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="sg1" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#a9b8c9"/><stop offset="1" stop-color="#eef2f7"/></linearGradient></defs><ellipse cx="60" cy="74" rx="38" ry="30" fill="none" stroke="url(#sg1)" stroke-width="7"/><path d="M24 62 30 36 45 52 60 24 75 52 90 36 96 62" fill="none" stroke="url(#sg1)" stroke-width="5" stroke-linejoin="round"/><rect x="52" y="35" width="16" height="16" rx="2" transform="rotate(45 60 43)" fill="#5fa8e8" stroke="#e3f0fd" stroke-width="2"/></svg></div><div class="rg rg-b"><svg viewBox="0 0 120 120" aria-hidden="true"><defs><linearGradient id="sg2" x1="0" x2="1"><stop offset="0" stop-color="#fff"/><stop offset=".5" stop-color="#aab6c4"/><stop offset="1" stop-color="#e9eef4"/></linearGradient></defs><ellipse cx="60" cy="68" rx="38" ry="30" fill="none" stroke="#1d2230" stroke-width="9"/><ellipse cx="60" cy="68" rx="38" ry="30" fill="none" stroke="#5d6676" stroke-width="2" stroke-dasharray="2 4"/><path d="M60 66 80 72V86Q80 100 60 108 40 100 40 86V72Z" fill="url(#sg2)" stroke="#6b7686" stroke-width="1.5"/><path d="M60 74V102" stroke="#8795a6" stroke-width="1.5"/></svg></div></div>
@@ -250,7 +250,7 @@
       </div>
     </section>
 
-    <section id="estampa3" class="screen theme-remo hidden">
+    <section id="estampa3" data-theme="remo" class="screen theme-remo hidden">
       <button class="back-link" id="backMission3">← Volver al recuerdo</button>
       <div class="stamp-intro"><p class="eyebrow">Un recuerdo para guardar</p><h2>Tu tercera<br><em>estampa</em></h2><p>Esta vez, con dos caras. Puedes imprimirlas y guardarlas.</p></div>
       <article id="printableStamp3" class="print-stamp">
@@ -259,12 +259,12 @@
           <div class="stamp-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
           <p class="stamp-overline">El tercer capítulo</p>
           <h2>Conmigo<br>y <em>Contigo</em></h2>
-          <img class="stamp-memory-photo" src="assets3/manos-anillos.jpg" alt="Nuestras manos con los anillos de promesa">
+          <img loading="lazy" decoding="async" class="stamp-memory-photo" src="assets3/manos-anillos.jpg" alt="Nuestras manos con los anillos de promesa">
           <p class="stamp-date">17 de marzo de 2026 · Pizzería San Remo</p>
           <p class="stamp-story">Un escudo para mí, una corona para ti. Entre meses difíciles esperé el día justo para pedirte ser mi enamorada, y dijiste que sí. Prometimos volver cada 17 de marzo. Te amo Shar.</p>
           <div class="stamp-rule"><span>✧</span></div>
           <p class="visits-title">Cada 17 de marzo volveremos</p>
-          <div class="polaroids visits"><figure class="polaroid"><img src="assets3/sanremo2.jpg" alt="Nosotros el 17 de marzo de 2026"><figcaption>2026</figcaption></figure><figure class="polaroid empty"><figcaption>2027</figcaption></figure><figure class="polaroid empty"><figcaption>2028</figcaption></figure></div>
+          <div class="polaroids visits"><figure class="polaroid"><img loading="lazy" decoding="async" src="assets3/sanremo2.jpg" alt="Nosotros el 17 de marzo de 2026" onerror="this.parentElement.classList.add('empty')"><figcaption>2026</figcaption></figure><figure class="polaroid empty"><figcaption>2027</figcaption></figure><figure class="polaroid empty"><figcaption>2028</figcaption></figure></div>
           <p class="stamp-dedication">“Conmigo y contigo, hoy y siempre.”</p>
           <div class="stamp-footer"><span>Un día a la vez</span><span>18 de noviembre de 2026</span></div>
         </div>
@@ -276,7 +276,7 @@
           <p class="stamp-overline">Para ti</p>
           <h2>Razones por las<br>que <em>te amo</em></h2>
           <ul class="reasons"><li>Porque eres muy atenta.</li><li>Porque eres linda y elegante.</li><li>Porque amo pasar tiempo contigo.</li><li>Porque eres una mujer virtuosa, trabajadora y estudiosa.</li><li>Porque te tomas en serio tus metas y siempre te esfuerzas por ser mejor.</li><li>Por las cosas sencillas y por reírme contigo.</li><li>Por ver juntos cosas que nos gustan y que ya son parte de nosotros.</li><li>Por cada momento contigo, por hablar del futuro y construirlo.</li></ul>
-          <div class="stamp-song"><img src="assets3/qr.png" alt="Código QR para escuchar With Me de Sum 41 en YouTube"><div><span class="song-eyebrow">Nuestra canción</span><strong>With Me · Sum 41</strong><a href="https://www.youtube.com/watch?v=X-9ENGPgrc4" target="_blank" rel="noopener noreferrer">Escuchar en YouTube ↗</a><small>Escanea el código y vuelve a escucharla.</small></div></div>
+          <div class="stamp-song"><img loading="lazy" decoding="async" src="assets3/qr.png" alt="Código QR para escuchar With Me de Sum 41 en YouTube"><div><span class="song-eyebrow">Nuestra canción</span><strong>With Me · Sum 41</strong><a href="https://www.youtube.com/watch?v=X-9ENGPgrc4" target="_blank" rel="noopener noreferrer">Escuchar en YouTube ↗</a><small>Escanea el código y vuelve a escucharla.</small></div></div>
           <div class="stamp-footer"><span>Un día a la vez</span><span>18 de noviembre de 2026</span></div>
         </div>
       </article>
@@ -286,8 +286,8 @@
     <footer class="site-footer"><span><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><p>Hecho con mucho amor, especialmente para ti.</p><span>♡</span></footer>
   </main>
  
- <audio id="bgMusic" src="assets3/cancion.mp3" loop preload="auto"></audio>
+ <audio id="bgMusic" loop preload="none"></audio>
   <button id="musicToggle" class="music-toggle" type="button" aria-label="Pausar música" hidden>♪</button> 
-  <script src="app.js?v=4"></script>
+  <script src="app.js?v=5"></script>
 </body>
 </html>
