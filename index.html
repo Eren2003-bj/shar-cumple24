@@ -1,6 +1,7 @@
 <!doctype html>
 <html lang="es">
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102b4e">
@@ -10,6 +11,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600&family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=5">
+  <link rel="stylesheet" href="dia4.css?v=1">
 </head>
 <body>
   <svg width="0" height="0" style="position:absolute" aria-hidden="true"><symbol id="flor" viewBox="0 0 100 100"><g fill="currentColor"><ellipse cx="50" cy="27" rx="14" ry="21"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(72 50 50)" fill-opacity=".92"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(144 50 50)"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(216 50 50)" fill-opacity=".92"/><ellipse cx="50" cy="27" rx="14" ry="21" transform="rotate(288 50 50)"/></g><circle cx="50" cy="50" r="9" fill="#f6e2b3"/><circle cx="50" cy="50" r="4" fill="#c9a96a"/></symbol></svg>
@@ -283,11 +285,89 @@
       <div class="stamp-actions"><button class="button button-primary" id="printButton3">Imprimir / Guardar como PDF <span>↗</span></button><button class="button button-quiet" id="finishDay3">Volver a los siete días</button></div>
     </section>
 
+<!-- DÍA 4 · NUESTRO UNIVERSO — pegar en index.html justo DESPUÉS de </section> de #estampa3 y ANTES de <footer class="site-footer"> -->
+
+    <section id="mision4" data-theme="vinilo" class="screen theme-vinilo hidden">
+      <button class="back-link" id="backCalendar4">← Volver a la colección</button>
+      <div class="mission-kicker"><span>Estampa 4</span><span class="kicker-dot">✦</span><span>19 de noviembre</span></div>
+      <div class="mission-heading">
+        <p class="eyebrow">Misión 4 · El universo que compartimos</p>
+        <h2>Nuestro<br><em>universo</em></h2>
+        <p class="mission-subtitle">Canciones, series y películas: los mundos en los que nos encontramos.</p>
+      </div>
+      <div class="chapter-quote"><span class="quote-mark">“</span><p>De todo lo que me gusta hacer, lo que más disfruto es ver cosas contigo.</p><span class="quote-caption">— Y escuchar, y cantar, y volver a ver.</span></div>
+
+      <div class="d4-panel">
+        <p class="eyebrow">Lado A</p>
+        <h3 class="d4-title">Lo que escuchamos</h3>
+        <p class="d4-sub">Toca un disco, o arrástralo hasta el tocadiscos.</p>
+        <div class="tt" id="tt" aria-hidden="true">
+          <div class="tt-platter"><div class="tt-vinyl"><div class="tt-label"><span id="ttLabelTxt">♪</span></div></div></div>
+          <div class="tt-arm"></div>
+          <div class="tt-knob"></div>
+        </div>
+        <div class="shelf" id="d4Shelf" aria-label="Repisa de discos"></div>
+        <div class="d4-now" id="d4Now" aria-live="polite"></div>
+        <p class="d4-count" id="d4Count"></p>
+      </div>
+
+      <div class="d4-panel">
+        <p class="eyebrow">Lado B</p>
+        <h3 class="d4-title">Lo que vimos</h3>
+        <p class="d4-sub">Toca una entrada para darle la vuelta.</p>
+        <div id="d4Films"></div>
+      </div>
+
+      <div class="quiz-result d4-cta hidden" id="d4Cta"><span class="result-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><h3>Hay una función especial</h3><p>Ya escuchaste suficiente. Falta elegir lo que viene.</p><button class="button button-primary" id="startD4Game">Ir a la próxima función <span>↗</span></button></div>
+      <div class="mission-signoff"><span>♡</span><p>Mi parte favorita de cualquier historia es verla contigo.</p></div>
+    </section>
+
+    <section id="minijuego4" data-theme="vinilo" class="screen theme-vinilo hidden">
+      <button class="back-link" id="backToMission4">← Volver al recuerdo</button>
+      <div class="game-heading"><p class="eyebrow">Misión extra · Próxima función</p><h2>¿Qué quieres<br><em>ver conmigo?</em></h2><p>Elige lo que te gustaría ver o escribe tu propia idea. También puedes sumar una canción a nuestra playlist.</p></div>
+      <div class="game-card d4-game">
+        <div class="d4-ticket"><small>Próxima función · Admite dos</small><strong id="d4Pick">Por elegir…</strong></div>
+        <div class="d4-opts" id="d4Opts"></div>
+        <label class="d4-field"><span>Otra idea (película, serie, anime…)</span><input id="d4Own" type="text" maxlength="80" autocomplete="off"></label>
+        <label class="d4-field"><span>Una canción para nuestra playlist</span><input id="d4Song" type="text" maxlength="80" autocomplete="off" placeholder="Título y artista"></label>
+        <div class="d4-actions">
+          <button class="button button-primary" id="d4Send" type="button">Enviarme mi función <span>✧</span></button>
+          <button class="button button-quiet" id="d4Copy" type="button">Copiar mensaje</button>
+        </div>
+        <p class="game-feedback" id="d4Fb" aria-live="polite"></p>
+        <button class="button button-primary hidden" id="revealStamp4" type="button">Ver mi estampa <span>✧</span></button>
+      </div>
+    </section>
+
+    <section id="estampa4" data-theme="vinilo" class="screen theme-vinilo hidden">
+      <button class="back-link" id="backMission4">← Volver al recuerdo</button>
+      <div class="stamp-intro"><p class="eyebrow">Un recuerdo para guardar</p><h2>Tu cuarta<br><em>estampa</em></h2><p>Un disco con dos lados. Puedes imprimirla y guardarla.</p></div>
+      <article id="printableStamp4" class="print-stamp">
+        <div class="stamp-border">
+          <div class="stamp-topline"><span>Entre flores azules y recuerdos</span><span>Colección · 4 de 7</span></div>
+          <div class="stamp-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></div>
+          <p class="stamp-overline">El cuarto capítulo</p>
+          <h2>Nuestro<br><em>universo</em></h2>
+          <div class="sides">
+            <div class="side"><h4>Lado A · Lo que escuchamos</h4><ol id="d4Tracks"></ol></div>
+            <div class="side"><h4>Lado B · Lo que vimos</h4><ul id="d4Seen"></ul></div>
+          </div>
+          <p class="stamp-next hidden" id="d4NextLine">Próxima función: <span id="d4Next"></span></p>
+          <p class="stamp-dedication">“Mi parte favorita de cualquier historia<br>es verla contigo.”</p>
+          <!-- El QR de la playlist va en assets4/qr.png. Si el archivo no existe, este bloque se oculta solo. -->
+          <div class="stamp-song"><img loading="lazy" decoding="async" src="assets4/qr.png" alt="Código QR de nuestra playlist" onerror="this.parentElement.classList.add('no-qr')"><div><span class="song-eyebrow">Nuestra playlist</span><strong>Escanéala y sigamos sumando</strong><small>Si tienes sugerencias, el disco todavía tiene espacio.</small></div></div>
+          <div class="stamp-footer"><span>Un día a la vez</span><span>19 de noviembre de 2026</span></div>
+        </div>
+      </article>
+      <div class="stamp-actions"><button class="button button-primary" id="printButton4">Imprimir / Guardar como PDF <span>↗</span></button><button class="button button-quiet" id="finishDay4">Volver a los siete días</button></div>
+    </section>
+
     <footer class="site-footer"><span><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><p>Hecho con mucho amor, especialmente para ti.</p><span>♡</span></footer>
   </main>
  
  <audio id="bgMusic" loop preload="none"></audio>
   <button id="musicToggle" class="music-toggle" type="button" aria-label="Pausar música" hidden>♪</button> 
-  <script src="app.js?v=5"></script>
+<script src="app.js?v=6"></script>
+<script src="dia4.js?v=1"></script>
 </body>
 </html>

@@ -6,7 +6,7 @@ const DAYS = [
   { day:16, title:'Donde comenzó todo', subtitle:'Un partido, una frase y un sachet de ketchup', screen:'#mision', group:['#mision','#minijuego','#estampa'], assets:'assets' },
   { day:17, title:'El recuerdo de un ramo azul', subtitle:'Detalles que hacen especial nuestra historia', screen:'#mision2', group:['#mision2','#minijuego2','#estampa2'], assets:'assets2' },
   { day:18, title:'Conmigo y Contigo', subtitle:'El día en que me dijiste que sí', screen:'#mision3', group:['#mision3','#minijuego3','#estampa3'], assets:'assets3' },
-  { day:19, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos' },
+  { day:19, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos', screen:'#mision4', group:['#mision4','#minijuego4','#estampa4'], assets:'assets4' },
   { day:20, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░' },
   { day:21, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░' },
   { day:22, title:'Para ti, preciosa princesa', subtitle:'Tu cumpleaños y la misión final' }
@@ -43,6 +43,7 @@ function showScreen(id, { push = true } = {}){
   if(!['#minijuego3','#estampa3'].includes(id)) stopSong();
   if(id === '#minijuego3') bgPause();
   svSync(id === '#mision2');
+  if(typeof d4Sync === 'function') d4Sync(id);
   if(push && location.hash !== id) history.pushState(null, '', id);
   window.scrollTo({top:0,behavior:'smooth'});
 }
@@ -234,8 +235,8 @@ function svShow(d = 1, first = false){
   const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches, dur = reduce ? 450 : 560, ease = 'cubic-bezier(.22,.8,.2,1)';
   slides.forEach(sl => sl.getAnimations().forEach(a => a.cancel()));   // permite hacer clic rápido sin que se encimen
   if(!first) slides.forEach(sl => { if(sl !== old) sl.classList.remove('show'); });
-  next.classList.remove('empty'); const img = next.querySelector('img'); img.src = `assets/${s.file}`; img.alt = s.text;
-  next.querySelector('small').textContent = `Coloca assets/${s.file}`;
+  next.classList.remove('empty'); const img = next.querySelector('img'); img.src = `assets2/${s.file}`; img.alt = s.text;
+  next.querySelector('small').textContent = `Coloca assets2/${s.file}`;
   cap.classList.add('swap');
   next.style.zIndex = 2; old.style.zIndex = 1; next.classList.add('show');
   if(first) next.animate([{opacity:0},{opacity:1}], {duration:dur*.8, easing:'ease'});
