@@ -2,6 +2,7 @@
 <html lang="es">
 <head>
 
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#102b4e">
@@ -285,7 +286,7 @@
       <div class="stamp-actions"><button class="button button-primary" id="printButton3">Imprimir / Guardar como PDF <span>↗</span></button><button class="button button-quiet" id="finishDay3">Volver a los siete días</button></div>
     </section>
 
-<!-- DÍA 4 · NUESTRO UNIVERSO — pegar en index.html justo DESPUÉS de </section> de #estampa3 y ANTES de <footer class="site-footer"> -->
+<!-- DÍA 4 -->
 
     <section id="mision4" data-theme="vinilo" class="screen theme-vinilo hidden">
       <button class="back-link" id="backCalendar4">← Volver a la colección</button>
@@ -298,38 +299,50 @@
       <div class="chapter-quote"><span class="quote-mark">“</span><p>De todo lo que me gusta hacer, lo que más disfruto es ver cosas contigo.</p><span class="quote-caption">— Y escuchar, y cantar, y volver a ver.</span></div>
 
       <div class="d4-panel">
-        <p class="eyebrow">Lado A</p>
         <h3 class="d4-title">Lo que escuchamos</h3>
         <p class="d4-sub">Toca un disco, o arrástralo hasta el tocadiscos.</p>
         <div class="tt" id="tt" aria-hidden="true">
           <div class="tt-platter"><div class="tt-vinyl"><div class="tt-label"><span id="ttLabelTxt">♪</span></div></div></div>
           <div class="tt-arm"></div>
           <div class="tt-knob"></div>
+          <span class="tt-note n1">♪</span><span class="tt-note n2">♫</span><span class="tt-note n3">♪</span>
+        <div class="tt-ctrl">
+  <button class="button button-quiet" id="ttPrev" type="button" aria-label="Disco anterior">⏮</button>
+  <button class="button button-primary" id="ttPlay" type="button" aria-label="Reproducir">▶</button>
+  <button class="button button-quiet" id="ttNext" type="button" aria-label="Siguiente disco">⏭</button>
+</div>
         </div>
+
         <div class="shelf" id="d4Shelf" aria-label="Repisa de discos"></div>
         <div class="d4-now" id="d4Now" aria-live="polite"></div>
         <p class="d4-count" id="d4Count"></p>
       </div>
 
       <div class="d4-panel">
-        <p class="eyebrow">Lado B</p>
         <h3 class="d4-title">Lo que vimos</h3>
         <p class="d4-sub">Toca una entrada para darle la vuelta.</p>
         <div id="d4Films"></div>
       </div>
 
-      <div class="quiz-result d4-cta hidden" id="d4Cta"><span class="result-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><h3>Hay una función especial</h3><p>Ya escuchaste suficiente. Falta elegir lo que viene.</p><button class="button button-primary" id="startD4Game">Ir a la próxima función <span>↗</span></button></div>
+      <div class="quiz-result d4-cta" id="d4Cta"><span class="result-flower"><svg class="flor" viewBox="0 0 100 100" aria-hidden="true"><use href="#flor"/></svg></span><h3>Hay una función especial</h3><p>Cuando quieras, falta elegir lo que viene.</p><button class="button button-primary" id="startD4Game">Ir a la próxima función <span>↗</span></button></div>
       <div class="mission-signoff"><span>♡</span><p>Mi parte favorita de cualquier historia es verla contigo.</p></div>
     </section>
 
     <section id="minijuego4" data-theme="vinilo" class="screen theme-vinilo hidden">
       <button class="back-link" id="backToMission4">← Volver al recuerdo</button>
-      <div class="game-heading"><p class="eyebrow">Misión extra · Próxima función</p><h2>¿Qué quieres<br><em>ver conmigo?</em></h2><p>Elige lo que te gustaría ver o escribe tu propia idea. También puedes sumar una canción a nuestra playlist.</p></div>
+      <div class="game-heading"><p class="eyebrow">Misión extra · Próxima función</p><h2>Mi amor ¿Qué quieres<br><em>ver conmigo en el futuro?</em></h2><p>Escribe lo que te gustaría ver y las canciones que quieras sumar. Añade todas las que quieras: me llegarán como una lista.</p></div>
       <div class="game-card d4-game">
-        <div class="d4-ticket"><small>Próxima función · Admite dos</small><strong id="d4Pick">Por elegir…</strong></div>
-        <div class="d4-opts" id="d4Opts"></div>
-        <label class="d4-field"><span>Otra idea (película, serie, anime…)</span><input id="d4Own" type="text" maxlength="80" autocomplete="off"></label>
-        <label class="d4-field"><span>Una canción para nuestra playlist</span><input id="d4Song" type="text" maxlength="80" autocomplete="off" placeholder="Título y artista"></label>
+        <div class="d4-ticket"><small>Próxima función</small><div class="d4-pick" id="d4Pick">Por elegir…</div></div>
+        <div class="d4-block">
+          <h3 class="d4-h">Lo que quiero ver contigo</h3>
+          <div class="d4-add"><input id="d4FilmIn" type="text" maxlength="80" autocomplete="off" placeholder="Película, serie, anime…" aria-label="Algo para ver juntos"><button class="button button-quiet" id="d4FilmAdd" type="button">Añadir</button></div>
+          <ul class="d4-list" id="d4FilmList"></ul>
+        </div>
+        <div class="d4-block">
+          <h3 class="d4-h">Canciones para nuestra playlist</h3>
+          <div class="d4-add"><input id="d4SongIn" type="text" maxlength="80" autocomplete="off" placeholder="Título y artista" aria-label="Una canción para la playlist"><button class="button button-quiet" id="d4SongAdd" type="button">Añadir</button></div>
+          <ul class="d4-list" id="d4SongList"></ul>
+        </div>
         <div class="d4-actions">
           <button class="button button-primary" id="d4Send" type="button">Enviarme mi función <span>✧</span></button>
           <button class="button button-quiet" id="d4Copy" type="button">Copiar mensaje</button>
@@ -368,6 +381,6 @@
  <audio id="bgMusic" loop preload="none"></audio>
   <button id="musicToggle" class="music-toggle" type="button" aria-label="Pausar música" hidden>♪</button> 
 <script src="app.js?v=6"></script>
-<script src="dia4.js?v=1"></script>
+<script src="dia4.js?v=2"></script>
 </body>
 </html>

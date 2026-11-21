@@ -31,16 +31,29 @@ body[data-theme="vinilo"] .wordmark{color:#fbf8f2}
 .tt-label{position:absolute;inset:32%;border-radius:50%;background:linear-gradient(135deg,var(--c1),var(--c2));display:grid;align-content:end;justify-items:center;padding-bottom:13%;overflow:hidden;text-align:center;transition:background .4s}
 .tt-label:before{content:'';position:absolute;left:50%;top:50%;width:11%;aspect-ratio:1;margin:-5.5% 0 0 -5.5%;border-radius:50%;background:#fffdf9;box-shadow:0 0 0 2px rgba(0,0,0,.25)}
 .tt-label span{position:relative;max-width:78%;font:700 clamp(6px,1.7vw,9px)/1.1 var(--sans);color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4)}
-.tt.playing .tt-vinyl{animation:d4spin 2.8s linear infinite}
+.tt-vinyl{animation:d4spin 2.6s linear infinite;animation-play-state:paused}
+.tt.playing .tt-vinyl{animation-play-state:running}
+.tt-platter{transition:box-shadow .6s}
+.tt.playing .tt-platter{box-shadow:0 0 0 6px #2b2b2f,0 0 30px rgba(255,200,120,.5),0 6px 14px rgba(0,0,0,.5)}
 @keyframes d4spin{to{transform:rotate(360deg)}}
 .tt-arm{position:absolute;right:9%;top:10%;width:7px;height:58%;border-radius:4px;transform-origin:50% 6px;transform:rotate(0);transition:transform 1.3s cubic-bezier(.5,0,.2,1);
   background:linear-gradient(90deg,#aeb8c4,#eef2f7 50%,#8d99a8);box-shadow:2px 3px 5px rgba(0,0,0,.4)}
 .tt-arm:before{content:'';position:absolute;left:50%;top:-10px;width:22px;height:22px;margin-left:-11px;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f4f6f9,#7b8795);box-shadow:0 3px 6px rgba(0,0,0,.4)}
 .tt-arm:after{content:'';position:absolute;left:-4px;bottom:-8px;width:15px;height:18px;border-radius:3px;background:linear-gradient(#2c3340,#10141b)}
-.tt.playing .tt-arm{transform:rotate(48deg)}
+.tt.playing .tt-arm{transform:rotate(48deg);animation:d4sway 5s ease-in-out 1.4s infinite}
+@keyframes d4sway{0%,100%{transform:rotate(48deg)}50%{transform:rotate(49.3deg)}}
+/* notas que suben mientras suena */
+.tt-note{position:absolute;z-index:3;top:14%;color:var(--gold);font-size:24px;opacity:0;pointer-events:none;text-shadow:0 2px 6px rgba(0,0,0,.4)}
+.tt-note.n1{left:16%}.tt-note.n2{left:40%;font-size:20px}.tt-note.n3{left:60%}
+.tt.playing .tt-note{animation:d4note 4.5s ease-out infinite}
+.tt.playing .n2{animation-delay:1.5s}.tt.playing .n3{animation-delay:3s}
+@keyframes d4note{0%{opacity:0;transform:translate(0,10px) scale(.6) rotate(0)}15%{opacity:1}100%{opacity:0;transform:translate(14px,-90px) scale(1.1) rotate(18deg)}}
 .tt-knob{position:absolute;right:8%;bottom:9%;width:11%;aspect-ratio:1;border-radius:50%;background:radial-gradient(circle at 35% 30%,#f0d9a3,#8a6a2f);box-shadow:0 3px 6px rgba(0,0,0,.45)}
 .tt:after{content:'';position:absolute;left:8%;bottom:6%;width:2.4%;aspect-ratio:1;border-radius:50%;background:#4a1d1d;transition:background .3s,box-shadow .3s}
 .tt.playing:after{background:#ff6b5e;box-shadow:0 0 10px #ff6b5e}
+.tt-ctrl{display:flex;gap:10px;justify-content:center;margin:0 0 16px}
+.tt-ctrl .button{min-width:54px;padding:8px 16px;font-size:18px}
+.sleeve.secret{outline:2px dashed var(--gold);outline-offset:2px}
 
 /* repisa de discos: una fila deslizable; en pantallas anchas se acomoda en rejilla */
 .shelf{display:flex;gap:12px;overflow-x:auto;padding:16px 14px 20px;margin:0 0 14px;border-radius:var(--r-md);scroll-snap-type:x proximity;
@@ -58,6 +71,10 @@ body[data-theme="vinilo"] .wordmark{color:#fbf8f2}
 /* disco en reproducción */
 .d4-now{background:var(--powder);border-radius:var(--r-md);padding:18px 16px;text-align:center;min-height:110px}
 .d4-now h3{font:600 24px/1.2 var(--serif);color:var(--navy);margin:0}
+.d4-eq{display:inline-flex;gap:3px;align-items:flex-end;height:16px;margin-left:10px;vertical-align:middle}
+.d4-eq i{width:3px;height:100%;border-radius:2px;background:var(--rose);transform-origin:bottom;animation:d4eq 1s ease-in-out infinite}
+.d4-eq i:nth-child(2){animation-delay:-.3s}.d4-eq i:nth-child(3){animation-delay:-.6s}.d4-eq i:nth-child(4){animation-delay:-.15s}
+@keyframes d4eq{0%,100%{transform:scaleY(.25)}50%{transform:scaleY(1)}}
 .d4-artist{font:700 14px var(--sans);color:var(--rose);margin:2px 0 8px}
 .d4-note{margin:0 auto 10px;max-width:440px;font:italic 400 18px/1.45 var(--serif);color:#4e6479}
 .d4-empty{margin:20px 0;color:var(--muted)}
@@ -79,6 +96,8 @@ button.tk{cursor:pointer}
 .tk-f,.tk-b{grid-area:1/1;backface-visibility:hidden;-webkit-backface-visibility:hidden;display:flex;flex-direction:column;justify-content:center;gap:4px;min-height:88px;padding:14px 20px;
   background:radial-gradient(circle at 0 50%,transparent 9px,var(--tkbg) 9.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 9px,var(--tkbg) 9.5px) right/51% 100% no-repeat;
   box-shadow:inset 0 4px 0 var(--gold)}
+.tk-f{position:relative}
+button.tk .tk-f:after{content:'↻';position:absolute;right:12px;top:8px;font-size:15px;color:var(--blue-mid)}
 .tk-b{transform:rotateY(180deg);align-items:center;text-align:center}
 .tk-f small{font:700 11px var(--sans);letter-spacing:1px;color:var(--rose)}
 .tk-f strong{font:600 17px/1.2 var(--serif);color:var(--navy)}
@@ -94,15 +113,22 @@ button.tk{cursor:pointer}
 .d4-ticket{--tkbg:#fff7e6;max-width:320px;margin:0 auto 20px;padding:20px 24px;text-align:center;filter:drop-shadow(0 8px 10px rgba(20,48,79,.22));box-shadow:inset 0 4px 0 var(--gold);
   background:radial-gradient(circle at 0 50%,transparent 9px,var(--tkbg) 9.5px) left/51% 100% no-repeat,radial-gradient(circle at 100% 50%,transparent 9px,var(--tkbg) 9.5px) right/51% 100% no-repeat}
 .d4-ticket small{display:block;font:700 11px var(--sans);letter-spacing:1px;color:var(--rose)}
-.d4-ticket strong{display:block;font:600 24px/1.2 var(--serif);color:var(--navy);margin-top:6px}
-.d4-opts{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin:0 0 6px}
-.opt-chip{border:1.5px solid #bcd0e3;background:#fff;border-radius:999px;padding:10px 16px;font:700 15px var(--sans);color:var(--blue);cursor:pointer;transition:background .2s,color .2s}
-.opt-chip:hover{background:var(--blue-soft)}
-.opt-chip.sel{background:var(--navy);border-color:var(--navy);color:#fff}
-.d4-field{display:block;max-width:380px;margin:14px auto 0;text-align:left}
-.d4-field span{font:700 14px var(--sans);color:var(--rose)}
-.d4-field input{width:100%;margin-top:6px;padding:12px 14px;border:1.5px solid #cddbe9;border-radius:var(--r-sm);font:400 16px var(--sans);background:#fff;color:var(--ink)}
-.d4-actions{margin-top:18px}
+.d4-pick{margin-top:6px;font:600 22px/1.25 var(--serif);color:var(--navy)}
+.d4-pick span{display:block}
+.d4-pick span+span{margin-top:4px}
+.d4-block{max-width:400px;margin:22px auto 0;text-align:left}
+.d4-h{font:600 20px var(--serif);color:var(--navy);margin:0 0 8px}
+.d4-add{display:flex;gap:8px}
+.d4-add input{flex:1;min-width:0;padding:12px 14px;border:1.5px solid #cddbe9;border-radius:var(--r-sm);font:400 16px var(--sans);background:#fff;color:var(--ink)}
+.d4-add .button{padding:10px 18px;font-size:15px}
+.d4-list{list-style:none;margin:10px 0 0;padding:0;display:grid;gap:6px}
+.d4-list li{display:flex;align-items:center;gap:10px;padding:9px 12px;background:var(--powder);border-radius:var(--r-sm);font:600 15px var(--sans);color:var(--ink);animation:rise .3s ease both}
+.d4-list li:before{content:'✧';color:var(--gold)}
+.d4-list li span{flex:1;overflow-wrap:anywhere}
+#d4SongList li:before{content:'♪';color:var(--rose)}
+.d4-del{border:0;background:none;color:var(--muted);font:700 20px/1 var(--sans);cursor:pointer;padding:2px 6px;border-radius:6px}
+.d4-del:hover{background:var(--rose-soft);color:var(--rose)}
+.d4-actions{margin-top:22px}
 .d4ghost{position:fixed;z-index:50;width:84px;height:84px;pointer-events:none;transform:translate(-50%,-50%) scale(1.1);border-radius:6px;background:linear-gradient(145deg,var(--c1),var(--c2));box-shadow:0 12px 20px rgba(0,0,0,.45)}
 
 /* estampa: disco con dos lados */
@@ -127,4 +153,11 @@ button.tk{cursor:pointer}
   #estampa4 .side ol,#estampa4 .side ul{font-size:8.4pt;line-height:1.28}
   #estampa4 .stamp-next{font-size:12pt;margin:1mm 0}
   #estampa4 .stamp-dedication{font-size:13pt;margin-bottom:2mm}
+}
+
+/* styles.css apaga todas las animaciones si el celular pide "reducir movimiento";
+   el giro del disco se conserva, más lento, porque es lo que da vida al tocadiscos. */
+@media(prefers-reduced-motion:reduce){
+  .tt-vinyl{animation:d4spin 8s linear infinite!important;animation-play-state:paused!important}
+  .tt.playing .tt-vinyl{animation-play-state:running!important}
 }

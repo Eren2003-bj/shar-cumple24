@@ -6,7 +6,7 @@ const DAYS = [
   { day:16, title:'Donde comenzó todo', subtitle:'Un partido, una frase y un sachet de ketchup', screen:'#mision', group:['#mision','#minijuego','#estampa'], assets:'assets' },
   { day:17, title:'El recuerdo de un ramo azul', subtitle:'Detalles que hacen especial nuestra historia', screen:'#mision2', group:['#mision2','#minijuego2','#estampa2'], assets:'assets2' },
   { day:18, title:'Conmigo y Contigo', subtitle:'El día en que me dijiste que sí', screen:'#mision3', group:['#mision3','#minijuego3','#estampa3'], assets:'assets3' },
-  { day:19, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos', screen:'#mision4', group:['#mision4','#minijuego4','#estampa4'], assets:'assets4' },
+  { day:19, title:'Nuestro universo', subtitle:'Historias, canciones y mundos que compartimos', screen:'#mision4', group:['#mision4','#minijuego4','#estampa4'], assets:'assets4', music:false },
   { day:20, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░' },
   { day:21, title:'[CLASIFICADO]', subtitle:'░▒▓██████▓▒░' },
   { day:22, title:'Para ti, preciosa princesa', subtitle:'Tu cumpleaños y la misión final' }
@@ -199,6 +199,7 @@ function syncMusicBtn(){
   musicBtn.setAttribute('aria-label', music.paused ? 'Reproducir música' : 'Pausar música');
 }
 function playDaySong(day, autoplay = true){
+  if(day.music === false){ music.pause(); music.removeAttribute('src'); syncMusicBtn(); return; }
   const src = `${day.assets}/cancion.mp3`;
   if(music.getAttribute('src') !== src) music.src = src;
   if(autoplay && !userPaused) music.play().catch(() => {});
