@@ -106,10 +106,13 @@
   function updateCount(){
     const n = heard.size;
     count.textContent = n ? `${n} de ${RECORDS.length} discos escuchados` : '';
-    if(SECRET && n >= RECORDS.length && records.length === RECORDS.length){
+    if(typeof SECRET !== 'undefined' && SECRET &&
+   n >= RECORDS.length &&
+   records.length === RECORDS.length){
       records.push(SECRET);
       shelf.append(makeSleeve(SECRET, records.length - 1, true));
       count.textContent += ' · ¡apareció un disco nuevo en la repisa!';
+    }
   }
   function resetDisc(){
     tt.classList.remove('playing');
